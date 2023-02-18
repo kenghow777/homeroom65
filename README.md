@@ -1,0 +1,70 @@
+# ระบบโฮมรูม โปรเจ็กนักศึกษา แผนกเทคโนโลยีสารสนเทศ วิทยาลัยเทคนิคชัยภูมิ
+
+เครื่องมือในการพัฒนา
+
+- Visual Studio Code
+- MAMP (สำหรับ Mac) | Wamp ( สำหรับ Windows)
+
+System Requirements
+
+- Apache 2.4+
+- PHP 5.6+
+- MySQL 5.5+
+
+วิธีตั้งค่า VirtualHost สำหรับเข้าใช้งานโดเมน
+
+- WORKSPACE PATH คือ path ที่เราเอาไฟล์เว็บไซด์วางไว้เช่น /Users/wannapong/workspace/homeroom65-2
+
+```
+<VirtualHost *:80>
+    ServerAdmin itchaiyaphum@gmail.com
+    DocumentRoot "WORKSPACE PATH"
+    ServerName dev.homeroom65-2.itchaiyaphum.com
+    ErrorLog "logs/dev.homeroom65-2.itchaiyaphum.com.com-error_log"
+    CustomLog "logs/dev.homeroom65-2.itchaiyaphum.com-access_log" common
+    <Directory "WORKSPACE PATH">
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+    <Directory "WORKSPACE PATH">
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+</VirtualHost>
+```
+
+Clone repo จาก github โดยเอาไฟล์ไปไว้ที่ WORKSPACE PATH
+
+- https://github.com/itchaiyaphum/homeroom65-2
+
+1.วิธีการตั้งค่าให้้รันได้บนเครื่อง localhost
+1.1.ตั้งค่าไฟล์ hosts
+
+- สำหรับ Windows (C:\Windows\System32\drivers\etc\hosts)
+- สำหรับ Mac (/etc/hosts)
+- ให้เพิ่มบรรทัดนี้ "127.0.0.1  dev.homeroom65-2.itchaiyaphum.com"
+
+  1.2.สร้างฐานข้อมูลใน localhost
+
+- สร้างฐานข้อมูลผ่าน phpmyadmin โดยดูชื่อ database, username, password ได้จากไฟล์ application/config/database.php
+
+  1.3.สร้างฐานข้อมูล
+
+- import ฐานข้อมูลโดยใช้ไฟล์ sql/database.sql ผ่าน phpmyadmin
+
+  1.4.รันทดสอบระบบ
+
+- เปิด Web Browser และรัน url (http://dev.homeroom65-2.itchaiyaphum.com)
+- login โดยใช้ demo user / password ดังนี้
+- admin@demo.com / itc123456
+- executive@demo.com / itc123456
+
+2.วิธีการ deploy to production
+
+- เข้าไปที่ url: http://deploy.itchaiyaphum.com
+- username, password สอบถามได้ที่ครูแม๊ค
+- กด build ที่ Job: "homeroom65-2.itchaiyaphum.com - deploy"
+- เข้า Browser ไปที่ url (http://homeroom65-2.itchaiyaphum.com)
+# homeroom65
