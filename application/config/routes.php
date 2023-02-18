@@ -57,7 +57,7 @@ $route['translate_uri_dashes'] = false;
 
 // TODO Route หา controller addition (ส่วนเสริมืั้สร้างเพิ่มขึ้นมา)
 $route['home']	= "addition/addition_controller/home";
-$route['addition/login']	= "addition/addition_controller/login";
+// $route['addition/login']	= "addition/addition_controller/login";
 $route['addition/staff_list']	= "addition/addition_controller/staff_list";
 $route['addition/reset_password']	= "addition/addition_controller/reset_password";
 $route['addition/teacher_list_inout']	= "addition/addition_controller/teacher_list_inout";
