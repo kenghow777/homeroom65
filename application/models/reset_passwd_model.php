@@ -4,27 +4,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Reset_passwd_model extends CI_Model{
 
   public function display_users(){
-    
+    $sql = "SELECT * FROM users LIMIT 5";
+    $query = $this->db->query($sql);
+    return $users = $query->result();
   }
 
   public function check_email($email){
-    $sql = "SELECT * FROM users WHERE email = '$email' ";
-    $query = $this->db->query($sql);
-    $user = $query->row();
-
-    if($user){
-      echo "<pre>";
-      print_r($user);
-      echo "</pre>";
-
-      $user_reset = [
-        'user_id' => $user->id,
-        'email' => $user->email,
-      ];
-
-      $this->session->set_userdata($user_reset);
-
-      return true;
+    if($email !== null){
+      $sql = "SELECT * FROM users WHERE email = '$email' ";
+      $query = $this->db->query($sql);
+      return $user = $query->row();
     }
   }
 

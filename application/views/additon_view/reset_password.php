@@ -1,5 +1,12 @@
 
-      <!-- start: main content -->
+<?php
+
+  $info = isset($check_email) != null ? [$check_email] : $users ;
+
+?>
+
+
+<!-- start: main content -->
       <div class="col-lg-9">
         <!-- start: breadcrumb -->
         <div class="page-header mb-3">
@@ -10,7 +17,7 @@
         </div>
 
         <!-- end: breadcrumb -->
-        <form action="<?php echo base_url('reset_password/check'); ?>" id="adminForm" method="POST">
+        <form action="<?php echo base_url('addition/reset_password'); ?>" id="adminForm" method="POST">
           <div class="card mb-3" id="passwordSection">
             <div class="card-header">
               <div class="row">
@@ -61,6 +68,7 @@
 
                 <hr />
 
+                <?php foreach($info as $row){ ?>
                 <div class="row gy-2">
 
                   <div class="col-12 col-md-1">
@@ -72,7 +80,7 @@
                   <div class="col-12 col-md-4">
                     <div class="d-flex">
                       <div>
-                        <div class="d-block">advisor001@demo.com</div>
+                        <div class="d-block"><?php echo $row->email ?></div>
                       </div>
                     </div>
                   </div>
@@ -80,21 +88,23 @@
                   <div class="col-12 col-md-3">
                     <div class="d-flex">
                       <div>
-                        <div class="d-block">อ.ชัยชนะ แสนสุรินทร์</div>
+                      <div class="d-block"><?php echo $row->firstname . ' ' . $row->lastname ?></div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-12 col-md-3">
+                  <div class="col-12 col-md-3 mb-3">
                     <div class="d-flex">
                       <div>
-                        <a class="btn btn-md btn-primary" href="<?php echo base_url('') ?>">รีเซ็ตรหัสผ่าน</a>
+                        <a class="btn btn-md btn-primary" href="<?php echo base_url("addition/reset/") . $row->id ?>">รีเซ็ตรหัสผ่าน</a>
                       </div>
                     </div>
                   </div>
 
                 </div>
-                
+
+                <?php } ?>
+
               </div>
               <hr />
               <div id="pagination" class="row gy-3">
@@ -124,9 +134,9 @@
           </div>
       </div>
       </form>
-    </div>
-    <!-- end: main content -->
+      </div>
+      <!-- end: main content -->
 
-  </div>
-  </div>
-</main>
+      </div>
+      </div>
+      </main>

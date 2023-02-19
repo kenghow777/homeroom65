@@ -34,10 +34,18 @@ class Addition_controller extends CI_Controller{
   
   public function reset_password(){
 
-    $this->reset_passwd_model->display_users();
+    $data["users"] = $this->reset_passwd_model->display_users();
+
+    $this->form_validation->set_rules('users_filter_search','Searching','required');    
+    if ($this->form_validation->run()) {
+      // ตรวจสอบข้อมูลการ login
+      if($this->reset_passwd_model->check_email($this->form_validation->set_value('users_filter_search'))){
+        $data['check_email'] = $this->reset_passwd_model->check_email($this->form_validation->set_value('users_filter_search'));
+      }
+    }
 
     $this->load->view('nav');
-    $this->load->view('additon_view/reset_password'); // ? รีเซ็ตรหัสผ่าน
+    $this->load->view('additon_view/reset_password' , $data); // ? รีเซ็ตรหัสผ่าน
     $this->load->view('footer');
     
   }
