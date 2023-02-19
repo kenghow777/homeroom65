@@ -2,8 +2,14 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 class Addition_controller extends CI_Controller{
 
-  public function home(){
+  public function __construct(){
+    parent::__construct();
+    $this->load->helper(array('form', 'url'));
+    $this->load->library('form_validation');
+    $this->load->model('reset_passwd_model');
+  }
 
+  public function home(){
     $this->load->view('nav');
     $this->load->view('home_view'); // ? หน้าแรก
     $this->load->view('footer');
@@ -27,6 +33,8 @@ class Addition_controller extends CI_Controller{
   }
   
   public function reset_password(){
+
+    $this->reset_passwd_model->display_users();
 
     $this->load->view('nav');
     $this->load->view('additon_view/reset_password'); // ? รีเซ็ตรหัสผ่าน

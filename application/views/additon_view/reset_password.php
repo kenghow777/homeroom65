@@ -10,7 +10,7 @@
         </div>
 
         <!-- end: breadcrumb -->
-        <form id="adminForm">
+        <form action="<?php echo base_url('reset_password/check'); ?>" id="adminForm" method="POST">
           <div class="card mb-3" id="passwordSection">
             <div class="card-header">
               <div class="row">
@@ -72,7 +72,7 @@
                   <div class="col-12 col-md-4">
                     <div class="d-flex">
                       <div>
-                        <div class="d-block">chaichana@gmail.com</div>
+                        <div class="d-block">advisor001@demo.com</div>
                       </div>
                     </div>
                   </div>
@@ -88,184 +88,13 @@
                   <div class="col-12 col-md-3">
                     <div class="d-flex">
                       <div>
-                        <a class="btn btn-md btn-primary" href="#">รีเซ็ตรหัสผ่าน</a>
+                        <a class="btn btn-md btn-primary" href="<?php echo base_url('') ?>">รีเซ็ตรหัสผ่าน</a>
                       </div>
                     </div>
                   </div>
 
                 </div>
-
-                <hr />
-
-                <div class="row gy-2">
-
-                  <div class="col-12 col-md-1">
-                    <div class="d-flex">
-                      <span class="d-md-none w-50">ลำดับที่: </span>2
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-4">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">mena@gmail.com</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">อ.มีนา ใจดี</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <a class="btn btn-md btn-primary" href="#">รีเซ็ตรหัสผ่าน</a>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <hr />
-                <div class="row gy-2">
-
-                  <div class="col-12 col-md-1">
-                    <div class="d-flex">
-                      <span class="d-md-none w-50">ลำดับที่: </span>3
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-4">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">preeyaorm2545@gmail.com</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">อ.ปรียา สุวรรณชัย</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <a class="btn btn-md btn-primary" href="#">รีเซ็ตรหัสผ่าน</a>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <hr />
-                <div class="row gy-2">
-
-                  <div class="col-12 col-md-1">
-                    <div class="d-flex">
-                      <span class="d-md-none w-50">ลำดับที่: </span>4
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-4">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">kritsana.naew@gmail.com</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">อ.กฤษณา แนววิเศษ</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <a class="btn btn-md btn-primary" href="#">รีเซ็ตรหัสผ่าน</a>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <hr />
-                <div class="row gy-2">
-
-                  <div class="col-12 col-md-1">
-                    <div class="d-flex">
-                      <span class="d-md-none w-50">ลำดับที่: </span>3
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-4">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">surunya2012@gmail.com</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">อ.สุรัณยา ยาทิพ</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <a class="btn btn-md btn-primary" href="#">รีเซ็ตรหัสผ่าน</a>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <hr />
-                <div class="row gy-2">
-
-                  <div class="col-12 col-md-1">
-                    <div class="d-flex">
-                      <span class="d-md-none w-50">ลำดับที่: </span>5
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-4">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">aphukong@gmail.com</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <div class="d-block">อ.อลงกรณ์ ภูคงคา</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-md-3">
-                    <div class="d-flex">
-                      <div>
-                        <a class="btn btn-md btn-primary" href="#">รีเซ็ตรหัสผ่าน</a>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+                
               </div>
               <hr />
               <div id="pagination" class="row gy-3">
