@@ -62,7 +62,7 @@ class Auth_model extends CI_Model
     public function logout()
     {
         // ลบค่าทั้งหมดใน session
-
+        $this->session->sess_destroy();
         return true;
     }
 }

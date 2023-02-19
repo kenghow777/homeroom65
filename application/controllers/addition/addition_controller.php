@@ -6,10 +6,16 @@ class Addition_controller extends CI_Controller{
     parent::__construct();
     $this->load->helper(array('form', 'url'));
     $this->load->library('form_validation');
+    $this->load->library('session');
     $this->load->model('reset_passwd_model');
   }
 
-  public function home(){
+  public function home(){    
+
+    if(!$this->session->userdata('status')){
+      redirect('/auth/login/');
+    }
+
     $this->load->view('nav');
     $this->load->view('left-menu');
     $this->load->view('home_view'); // ? หน้าแรก
