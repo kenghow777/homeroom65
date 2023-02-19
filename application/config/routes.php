@@ -63,6 +63,8 @@ $route['addition/reset_password']	= "addition/addition_controller/reset_password
 $route['addition/teacher_list_inout']	= "addition/addition_controller/teacher_list_inout";
 $route['addition/advisor_report']	= "addition/addition_controller/advisor_report";
 
+$route['addition/reset/(:num)']	= "reset_password/reset_password_function/$1";
+
 $route['about']	= "home/about";
 $route['contact']	= "home/contact";
 $route['help']	= "home/help";
