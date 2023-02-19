@@ -31,7 +31,7 @@ class Reset_password extends CI_Controller{
     }
 
     public function reset_password_function($id){
-      echo $id;
+      $this->reset_passwd_model->reset($id);
     }
 
 }

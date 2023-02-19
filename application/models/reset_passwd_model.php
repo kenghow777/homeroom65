@@ -17,4 +17,12 @@ class Reset_passwd_model extends CI_Model{
     }
   }
 
+  public function reset($id){
+
+      $hash_password = md5("itc123456");
+      $sql = "UPDATE users SET password = '$hash_password' WHERE id = '$id' ";
+      $query = $this->db->query($sql);
+      // return ture;
+  }
+
 }

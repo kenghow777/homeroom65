@@ -53,7 +53,7 @@ class Auth extends CI_Controller
             }
         }
 
-        $this->load->view('header');
+        // $this->load->view('header');
         $this->load->view('nav');
         $this->load->view('auth/login');
         $this->load->view('footer');
