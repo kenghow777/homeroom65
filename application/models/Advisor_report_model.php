@@ -19,7 +19,7 @@ class Advisor_report_model extends BaseModel
         $items = xxx;
 
         return $items;
-    }
+    }   
 
     public function getAdvisorGroupItems()
     {

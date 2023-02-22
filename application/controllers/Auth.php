@@ -49,7 +49,7 @@ class Auth extends CI_Controller
         // redirect ไปที่หน้าหลัก
         redirect('/home');
       } else {
-        echo "login error";
+        echo "<div class='alert alert-danger' role='alert'>ข้อมูลผิดพลาดกรุณากรอกข้อมูลใหม่</div>";
         // ตั้งค่า error ผ่าน validation form
       }
     }

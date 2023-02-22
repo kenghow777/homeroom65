@@ -11,21 +11,23 @@
               <a class="nav-link link-secondary" href="<?php echo base_url('home'); ?>"><i class="fa-solid fa-house"></i> หน้าหลัก</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link link-secondary" href="<?php echo base_url('addition/staff_list'); ?>"><i class="fa-regular fa-user"></i> รายชื่อบุคลากร</a>
-            </li>
+            <?php if ($user_type == 'admin') { ?>
+              <li class="nav-item">
+                <a class="nav-link link-secondary" href="<?php echo base_url('addition/staff_list'); ?>"><i class="fa-regular fa-user"></i> รายชื่อบุคลากร</a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link link-secondary" href="<?php echo base_url('addition/reset_password'); ?>"><i class="fa-solid fa-key"></i> คืนค่ารหัสผ่านผู้ใช้งาน</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link link-secondary" href="<?php echo base_url('addition/reset_password'); ?>"><i class="fa-solid fa-key"></i> คืนค่ารหัสผ่านผู้ใช้งาน</a>
+              </li>
+            <?php } elseif ($user_type == 'executive') { ?>
+              <li class="nav-item">
+                <a class="nav-link link-secondary" href="<?php echo base_url('addition/teacher_list_inout'); ?>"><i class="fa-solid fa-school"></i> ครูเข้า-ออกระหว่างเทอม</a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link link-secondary" href="<?php echo base_url('addition/teacher_list_inout'); ?>"><i class="fa-solid fa-school"></i> ครูเข้า-ออกระหว่างเทอม</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link link-secondary" href="<?php echo base_url('addition/advisor_report'); ?>"><i class="fa-solid fa-print"></i> รายงานปฏิบัติงานของครูที่ปรึกษา</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link link-secondary" href="<?php echo base_url('addition/advisor_report'); ?>"><i class="fa-solid fa-print"></i> รายงานปฏิบัติงานของครูที่ปรึกษา</a>
+              </li>
+            <?php } ?>
 
           </ul>
         </div>

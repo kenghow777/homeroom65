@@ -3,7 +3,7 @@
         <!-- start: breadcrumb -->
         <div class="page-header mb-3">
           <div class="d-flex justify-content-between">
-            <h3 class="mt-3">ยินดีต้อนรับเข้าสู่ระบบจัดการข้อมูลหลังบ้าน (แอดมิน)</h3>
+            <h3 class="mt-3">ยินดีต้อนรับเข้าสู่ระบบจัดการข้อมูลหลังบ้าน ( <?php echo $firstname . ' ' . $lastname ?> )</h3>
             <!-- <a class="btn btn-primary align-self-end" href="/ui/4.2.3.admin-users-add.html"><i class="bi-person-plus-fill me-1"></i> เพิ่มผู้ใช้งาน</a> -->
           </div>
         </div>
