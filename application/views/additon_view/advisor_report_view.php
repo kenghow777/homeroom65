@@ -11,6 +11,8 @@
 
         <!-- end: breadcrumb -->
         <form id="adminForm">
+          <?php foreach($semesters as $semester){?>
+          
           <div class="card mb-3" id="passwordSection">
             <div class="card-header">
               <div class="row">
@@ -18,7 +20,7 @@
                 <div class="col-12 col-sm-7">
                   <div class="d-flex justify-content-start">
 
-                    <p class="m-0">ภาคเรียนที่ 2 ปีการศึกษา 2565</p>
+                    <p class="m-0"><?php echo $semester->name ?></p>
 
                     <!-- <select class="form-select me-2" name="users_filter_user_type" onchange="document.adminForm.submit();">
                       <option value="">- ค้าหารายแผนก -</option>
@@ -58,62 +60,30 @@
                   <div class="col-1"><strong>ร้อยละ</strong></div>
                   <div class="col-2"><strong>สุปผลปฏิบัติงาน</strong></div>
                 </div> -->
-
+                  <?php foreach( $departments as $department){?>
                 <div class="row gy-2 mt-3">
                   <div class="col-12 col-md-6">
                     <div class="d-flex">
-                      <span class="d-md-none">แผนก: </span>เทคโนโลยีสารสนเทศ
+                      <span class="d-md-none">แผนก: </span><?= $department->major_name ?>
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="d-flex">
                       <!-- <span class="d-md-none">พิมพ์เอกสาร: <br /></span> -->
                       <div>
-                        <a class="btn btn-primary align-self-end" href="#"><i class="fa-solid fa-print"></i> พิมพ์เอกสาร </a>
+                        <a class="btn btn-primary align-self-end" href="<?= site_url("addition/advisor_print_report?department_id={$department->id}&semester_id={$semester->id}") ?> "><i class="fa-solid fa-print"></i> พิมพ์เอกสาร </a>
                       </div>
                     </div>
                   </div>
                 </div>
-
+                      
                 <hr>
-
-                <div class="row gy-2 mt-3">
-                  <div class="col-12 col-md-6">
-                    <div class="d-flex">
-                      <span class="d-md-none">แผนก: </span>ช่างยนต์
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="d-flex">
-                      <!-- <span class="d-md-none">พิมพ์เอกสาร: <br /></span> -->
-                      <div>
-                        <a class="btn btn-primary align-self-end" href="#"><i class="fa-solid fa-print"></i> พิมพ์เอกสาร </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <hr>
-
-                <div class="row gy-2 mt-3">
-                  <div class="col-12 col-md-6">
-                    <div class="d-flex">
-                      <span class="d-md-none">แผนก: </span>ช่างไฟฟ้ากำลัง
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="d-flex">
-                      <!-- <span class="d-md-none">พิมพ์เอกสาร: <br /></span> -->
-                      <div>
-                        <a class="btn btn-primary align-self-end" href="#"><i class="fa-solid fa-print"></i> พิมพ์เอกสาร </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                    <?php } ?>
+               
               </div>
             </div>
           </div>
+          <?php } ?>
         </form>
       </div>
       <!-- end: main content -->
