@@ -9,6 +9,7 @@ class Addition_controller extends CI_Controller{
     $this->load->library('session');
     $this->load->model('reset_passwd_model');
     $this->load->model('report_model');
+    $this->load->model('staff_list_model');
   }
 
   public function home(){    
@@ -43,14 +44,50 @@ class Addition_controller extends CI_Controller{
   
   public function staff_list(){
 
+    $dep_id = 98;
+    // $dep_name = "การบัญชี";
+
+    // ? แสดงรายชื่อครูจากการกด Search
+    if(!empty($_POST['users_filter_search'])){
+       $this->form_validation->set_rules('users_filter_search', 'Search Department', 'required');
+      if ($this->form_validation->run()){
+        $dep_name = $this->form_validation->set_value('users_filter_search');
+        $data['department_search'] = $this->staff_list_model->display_headdepartment_search($dep_name);
+        $head_id_search = $data['department_search'][0]->user_id;
+        $dep_id_search = $data['department_search'][0]->major_id;
+     }
+    }
+    
+    // ? แสดงรายชื่อครูจากการกด dropdown
+    if(!empty($_POST['users_filter_user_dep'])){
+       $this->form_validation->set_rules('users_filter_user_dep', 'Enter Department', 'required');
+      if ($this->form_validation->run()){
+        $dep_id = $this->form_validation->set_value('users_filter_user_dep');
+     }
+    }
+
     $data = array(
       'user_type' => $this->session->userdata('user_type'),
       'user_name' => $this->session->userdata('user_type'),
     );
+    
+    // ? แสดงแผนกทั้งหมด
+    $data['department'] = $this->staff_list_model->display_dep();
+
+    // ? หาหัวหน้าแผนก
+    $data['headdepartment'] = $this->staff_list_model->display_headdepartment($dep_id);
+    $head_id = $data['headdepartment'][0]->user_id;
+    
+    if(!empty($dep_id_search) AND !empty($head_id_search)){
+      $data['advisors'] = $this->staff_list_model->display_dep_select($dep_id, $head_id,$dep_id_search ,$head_id_search);
+    }else{
+      $data['advisors'] = $this->staff_list_model->display_dep_select($dep_id, $head_id, "", "");
+    }
+    // $data['advisors'] = $this->staff_list_model->display_dep_select($dep_id, $head_id,$dep_id_search ,$head_id_search);
 
     $this->load->view('nav');
     $this->load->view('left-menu' , $data);
-    $this->load->view('additon_view/staff_list'); // ? แสดงรายชื่อใช้
+    $this->load->view('additon_view/staff_list' , $data); // ? แสดงรายชื่อใช้
     $this->load->view('footer');
     
   }

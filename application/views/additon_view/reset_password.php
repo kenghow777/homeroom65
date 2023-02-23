@@ -68,12 +68,12 @@
 
                 <hr />
 
-                <?php foreach($info as $row){ ?>
+                <?php foreach($info as $index => $row){ ?>
                 <div class="row gy-2">
 
                   <div class="col-12 col-md-1">
                     <div class="d-flex">
-                      <span class="d-md-none w-50">ลำดับที่: </span>1
+                      <span class="d-md-none w-50">ลำดับที่: </span><?php echo $index+1 ?>
                     </div>
                   </div>
 
