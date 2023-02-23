@@ -1,79 +1,81 @@
 <?php
-
+// ดีจ้า
 defined('BASEPATH') or exit('No direct script access allowed');
-class Advisor_report_model extends BaseModel
+class Advisor_report_model extends CI_Model
 {
     public function getHomeroomItems()
     {
-        $sql = 'xxx';
-        $query = xxx;
-        $items = xxx;
+        $sql = 'SELECT * FROM `homerooms` WHERE `status`=1 ';
+        $query = $this->db->query($sql);
+        $items = $query->result();
 
         return $items;
     }
 
     public function getSemesterItems()
     {
-        $sql = 'xxx';
-        $query = xxx;
-        $items = xxx;
+        $sql = 'SELECT * FROM `semester` WHERE `status` =1 ';
+        $query = $this->db->query($sql);
+        $items = $query->result();
 
         return $items;
     }   
 
     public function getAdvisorGroupItems()
     {
-        $sql = 'xxx';
-        $query = xxx;
-        $items = xxx;
+        $sql = 'SELECT * FROM advisors_groups 
+        LEFT JOIN users_advisor ON `advisors_groups`.`advisor_id`=`users_advisor`.`user_id`
+        WHERE `advisors_groups`.`status`=1';
+        $query = $this->db->query($sql);
+        $items = $query->result();
 
         return $items;
     }
 
     public function getMinorItems($major_id = 0)
     {
-        $sql = 'xxx';
-        $query = xxx;
-        $items = xxx;
+        $sql = "SELECT * FROM `minors` WHERE `status` =1 AND `major_id` = $major_id ";
+        $query = $this->db->query($sql);
+        $items = $query->result();
 
         return $items;
     }
 
     public function getGroupItems($major_id = 0)
     {
-        $sql = 'xxx';
-        $query = xxx;
-        $items = xxx;
-
+        $sql = "SELECT * FROM `groups`  WHERE `status` = 1 AND `major_id` = $major_id  ";
+        $query = $this->db->query($sql);
+        $items = $query->result();
         return $items;
     }
 
     public function getAllActionItems()
     {
-        $sql = 'xxx';
-        $query = xxx;
-        $items = xxx;
+        $sql = 'SELECT * FROM `homeroom_actions` WHERE `status` =1 ';
+        $query = $this->db->query($sql);
+        $items = $query->result();
 
         return $items;
     }
 
     public function getMajorItem($id = 0)
     {
-        $sql = 'xxx';
-        $query = xxx;
+        $sql = "SELECT * FROM `majors` WHERE `status` = 1 AND  `id` = '$id' ";
+        $query = $this->db->query($sql);
         $item = $query->row();
 
         return $item;
     }
 
-    public function get_approving($major_id = 0)
+    public function get_approving()
     {
         // ดึงค่าจาก input
-        $filter_major = $this->ci->input->get_post('major_id');
+       echo  $filter_major = $this->input->get('department_id');
 
         $items = [];
 
-        if ($filter_major) {
+        if (!$filter_major) {
+            
             return $items;
         }
 
@@ -120,9 +122,9 @@ class Advisor_report_model extends BaseModel
                         $item_group = new stdClass();
                         $item_group->group_id = $group->id;
                         $item_group->group_name = $group->group_name;
-
+                        
                         $item_group->advisors = [];
-
+                        
                         foreach ($advisor_group_items as $advisor_group) {
                             if ($advisor_group->group_id == $group->id) {
                                 $item_advisor = new stdClass();
@@ -130,21 +132,21 @@ class Advisor_report_model extends BaseModel
                                 $item_advisor->advisor_type = $advisor_group->advisor_type;
                                 $item_advisor->firstname = $advisor_group->firstname;
                                 $item_advisor->lastname = $advisor_group->lastname;
-
+                                
                                 $item_advisor->stats_num_homeroom = count($homeroom_items);
                                 $item_advisor->stats_num_checked_percent = 0;
-
+                                
                                 $item_advisor->homerooms = [];
-
+                                
                                 $tmp_stats_num_checked = 0;
-
+                                
                                 foreach ($homeroom_items as $homeroom) {
                                     $item_homeroom = new stdClass();
                                     $item_homeroom->id = $homeroom->id;
                                     $item_homeroom->week = $homeroom->week;
                                     $item_homeroom->is_check = 0;
                                     $item_homeroom->approving = [];
-
+                                    
                                     foreach ($action_items as $action) {
                                         if ($action->homeroom_id == $homeroom->id && $action->group_id == $group->id && $action->user_id == $advisor_group->advisor_id) {
                                             $item_approving = new stdClass();
@@ -162,6 +164,7 @@ class Advisor_report_model extends BaseModel
                                     array_push($item_advisor->homerooms, $item_homeroom);
                                 }
 
+                                $item_advisor->stats_num_checked = $tmp_stats_num_checked;
                                 $item_advisor->stats_num_checked_percent = ($tmp_stats_num_checked / $item_advisor->stats_num_homeroom) * 100;
 
                                 array_push($item_group->advisors, $item_advisor);
@@ -179,14 +182,14 @@ class Advisor_report_model extends BaseModel
 
             array_push($items, $item);
         }
-
+        // var_dump($items);
         return $items;
     }
 
     public function get_department_items()
     {
-        $sql = 'xxx';
-        $query = 'xxx';
+        $sql = 'SELECT * FROM `majors` WHERE `status` = 1';
+        $query = $this->db->query($sql);
         $items = $query->result();
 
         return $items;
