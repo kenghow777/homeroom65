@@ -51,7 +51,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = 'home'; // TODO หน้าแรก /controllers/Home.php
+$route['default_controller'] = 'addition/addition_controller/home'; // TODO หน้าแรก /controllers/Home.php
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
 
@@ -62,6 +62,8 @@ $route['addition/staff_list']	= "addition/addition_controller/staff_list";
 $route['addition/reset_password']	= "addition/addition_controller/reset_password";
 $route['addition/teacher_list_inout']	= "addition/addition_controller/teacher_list_inout";
 $route['addition/advisor_report']	= "addition/addition_controller/advisor_report";
+$route['addition/advisor_print_report']	= "addition/addition_controller/advisor_print_report";
+
 
 $route['addition/reset/(:num)']	= "reset_password/reset_password_function/$1";
 
