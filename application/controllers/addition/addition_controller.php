@@ -125,14 +125,27 @@ class Addition_controller extends CI_Controller{
   }
   
   public function advisor_report(){
-
-    $data['user_type'] = $this->session->userdata('user_type');
-
+    $this->load->model('advisor_report_model');
+    $menu['user_type'] = $this->session->userdata('user_type');
+    $data['departments'] = $this->advisor_report_model->get_department_items();
+    $data['semesters'] = $this->advisor_report_model->getSemesterItems();
     $this->load->view('nav');
-    $this->load->view('left-menu' , $data);
-    $this->load->view('additon_view/advisor_report_view'); // ? จัดการรายชื่อครู เข้า/ออก
+    $this->load->view('left-menu' , $menu);
+    $this->load->view('additon_view/advisor_report_view',$data); // ?
     $this->load->view('footer');
   
+  }
+// หน้าที่สร้างขึ้นมาใหม่
+  public function advisor_print_report(){
+    // echo $this->input->get('semester_id');
+    // $department_id = $this->input->get('department_id');
+    $this->load->model('advisor_report_model');
+    $data = $this->advisor_report_model->get_approving();
+    
+    // echo '<pre>';
+    // var_dump($data[0]);
+    // echo '<hr>';
+    // var_dump($data);
   }
 
 }
